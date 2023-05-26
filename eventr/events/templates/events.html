@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eventr - Track your events easily</title>
+    <link rel="stylesheet" href="{% static 'css/app.css' %}" />
+    <link rel="stylesheet" href="{% static 'events.css' %}" />
+  </head>
+  <body>
+    <a href="/" class="branding">
+      <img class="logo" src="{% static 'images/logo.svg' %}" />
+      <h1>Eventr</h1>
+    </a>
+
+    <div class="events-data">
+      <h1 class="mar-0 pad-0">Hello, <strong>{{name}}</strong></h1>
+      <h3 class="mar-0 pad-0 email-text">Email: <strong>{{email}}</strong></h3>
+
+      <h2>Events:</h2>
+      <div class="events-list">
+        {% for event in events %}
+        <a href="{{event.htmlLink}}" target="_blank" class="event-card">
+          <h2 class="mar-0 pad-0">{{event.summary}}</h2>
+          <p class="mar-0 pad-0">
+            {{event.start.dateTime}} - {{event.end.dateTime}}
+          </p>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+  </body>
+</html>
